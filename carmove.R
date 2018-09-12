@@ -107,7 +107,7 @@ carmove = function (roads, car, packages)
         newNode$y = expanded$y-1;
         #show("newNode y")
         #show(newNode$y)
-        newNode$cost = expanded$cost + roads$vroads[expanded$x,expanded$y]; # fel här??
+        newNode$cost = expanded$cost + roads$vroads[expanded$x,expanded$y-1]; 
         #show("vroads")
         #show(roads$vroads)
         newNode$heur = manhattanDist(expanded$x,expanded$y-1, packages[toGo, 1+offset],packages[toGo, 2+offset]);
