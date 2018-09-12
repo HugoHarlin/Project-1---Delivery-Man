@@ -2,10 +2,6 @@ appendSorted = function (newNode,frontier){
   # We add the new node to the frontier, sorted with respect to the total cost of the path
   length = length(frontier);
   totcost = newNode$heur + newNode$cost;
-show("newNode$heur")
-  show(newNode$heur)
-  show("newNode$cost")
-  show(newNode$cost)
   
   
   if(length == 0)
