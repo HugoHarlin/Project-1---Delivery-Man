@@ -58,6 +58,7 @@ carmove = function (roads, car, packages)
         newNode$path = append(expanded$path, list(x = expanded$x-1, y = expanded$y));
         
         
+        
         # We add the new node to the frontier, sorted with respect to the total cost of the path
         frontier = appendSorted(newNode,frontier);
       }
