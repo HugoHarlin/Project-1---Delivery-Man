@@ -111,7 +111,7 @@ carmove = function (roads, car, packages)
       
   }   
   #show(expanded)
-  if(length(expanded) == 0){
+  if(length(expanded[[1]]) == 0){
     nextMove = 5;
   }
   else if (expanded$path$x > car$x)

@@ -17,7 +17,7 @@ appendSorted = function (newNode,frontier){
         return(frontier)
       }
     }
-    frontier = append(frontier,list(newNode));
+    frontier[length+1] = list(newNode);
   }
   return (frontier)
 }
