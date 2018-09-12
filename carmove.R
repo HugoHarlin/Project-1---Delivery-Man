@@ -44,13 +44,13 @@ carmove = function (roads, car, packages)
     # current node is not the target, we expand the best path.
     else 
     {
-      newNode =  list(x=0, y=0, cost=0, heur=0, path=list());
+      
       
       # checks if movement to the left is possible
       if(expanded$x > 1)
       {
         #show("movement left")
-        
+        newNode =  list(x=0, y=0, cost=0, heur=0, path=list());
         newNode$x = expanded$x-1;
         newNode$y = expanded$y;
         newNode$cost = expanded$cost + roads$hroads[expanded$x-1,expanded$y];
@@ -66,6 +66,7 @@ carmove = function (roads, car, packages)
       if(expanded$x < 10)
       {
         #show("movement right")
+        newNode =  list(x=0, y=0, cost=0, heur=0, path=list());
         newNode$x = expanded$x+1;
         newNode$y = expanded$y;
         newNode$cost = expanded$cost + roads$hroads[expanded$x,expanded$y];
@@ -79,6 +80,7 @@ carmove = function (roads, car, packages)
       if(expanded$y < 10)
       {
         #show("movement upp")
+        newNode =  list(x=0, y=0, cost=0, heur=0, path=list());
         newNode$x = expanded$x;
         newNode$y = expanded$y+1;
         newNode$cost = expanded$cost + roads$vroads[expanded$x,expanded$y];
@@ -91,22 +93,18 @@ carmove = function (roads, car, packages)
       # checks if movement upp is down
       if(expanded$y > 1)
       {
-        #show("movement down")
         newNode =  list(x=0, y=0, cost=0, heur=0, path=list());
-
         newNode$x = expanded$x;
         newNode$y = expanded$y-1;
-        #show("newNode y")
-        #show(newNode$y)
         newNode$cost = expanded$cost + roads$vroads[expanded$x,expanded$y-1]; 
-        #show("vroads")
-        #show(roads$vroads)
         newNode$heur = manhattanDist(expanded$x,expanded$y-1, packages[toGo, 1+offset],packages[toGo, 2+offset]);
         newNode$path = append(expanded$path, list(x = expanded$x, y = expanded$y-1));   
         # We add the new node to the frontier, sorted with respect to the total cost of the path
         frontier = appendSorted(newNode,frontier);
       }
       
+      # We add the new node to the frontier, sorted with respect to the total cost of the path
+      #frontier = appendSorted(newNode,frontier);
  
       
     } 
