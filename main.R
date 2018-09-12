@@ -3,8 +3,8 @@ library(DeliveryMan)
 source("carmove.R")
 source("appendSorted.R")
 source("manhattanDist.R")
+source("aStar.R")
 options(error=traceback)
 
-runDeliveryMan(carReady = carmove)
-
-
+#runDeliveryMan(carReady = carmove)
+testDM(myFunction = carmove)
