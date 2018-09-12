@@ -7,9 +7,23 @@ appendSorted = function (newNode,frontier){
   if(length == 0)
   {
     frontier[1] = list(newNode);
-    
   }
   else{
+    
+    for(i in 1:length){
+      if(frontier[[i]]$x == newNode$x && frontier[[i]]$y == newNode$y){
+        if(frontier[[i]]$cost + frontier[[i]]$heur >= totcost ){
+          frontier = frontier[-i];
+          length = length -1;
+          break
+        }else{
+          return(frontier)
+        }
+      }
+      
+    }
+    
+    
     for (i in 1:length) {
       if(frontier[[i]]$cost + frontier[[i]]$heur >= totcost)
       {
