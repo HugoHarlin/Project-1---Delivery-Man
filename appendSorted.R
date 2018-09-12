@@ -6,7 +6,7 @@ appendSorted = function (newNode,frontier){
   
   if(length == 0)
   {
-    frontier = append(frontier,list(newNode));
+    frontier[1] = list(newNode);
     
   }
   else{
