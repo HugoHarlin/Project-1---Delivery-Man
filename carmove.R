@@ -110,7 +110,7 @@ carmove = function (roads, car, packages)
     } 
       
   }   
-  show(expanded)
+  #show(expanded)
   if(length(expanded) == 0){
     nextMove = 5;
   }
