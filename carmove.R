@@ -118,7 +118,6 @@ carmove = function (roads, car, packages)
         frontier = appendSorted(newNode,frontier);
       }
       
-      
     } 
       
   }   
