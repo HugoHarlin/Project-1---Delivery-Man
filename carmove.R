@@ -55,9 +55,10 @@ carmove = function (roads, car, packages)
         newNode$y = expanded$y;
         newNode$cost = expanded$cost + roads$hroads[expanded$x-1,expanded$y];
         newNode$heur = manhattanDist(expanded$x-1,expanded$y, packages[toGo, 1+offset],packages[toGo, 2+offset]);
-        newNode$path = append(expanded$path, list(x = expanded$x-1, y = expanded$y));
+        newNode$path[[1]] = list(x = expanded$x-1, y = expanded$y);
         #show("new node")
         #show(newNode)
+        show(expanded$path)
         # We add the new node to the frontier, sorted with respect to the total cost of the path
         frontier = appendSorted(newNode,frontier);
       }
@@ -71,7 +72,7 @@ carmove = function (roads, car, packages)
         newNode$y = expanded$y;
         newNode$cost = expanded$cost + roads$hroads[expanded$x,expanded$y];
         newNode$heur = manhattanDist(expanded$x+1,expanded$y, packages[toGo, 1+offset],packages[toGo, 2+offset]);
-        newNode$path = append(expanded$path, list(x = expanded$x+1, y = expanded$y));
+        newNode$path[[1]] = list(x = expanded$x+1, y = expanded$y);
         # We add the new node to the frontier, sorted with respect to the total cost of the path
         frontier = appendSorted(newNode,frontier);
       }
@@ -85,7 +86,7 @@ carmove = function (roads, car, packages)
         newNode$y = expanded$y+1;
         newNode$cost = expanded$cost + roads$vroads[expanded$x,expanded$y];
         newNode$heur = manhattanDist(expanded$x,expanded$y+1, packages[toGo, 1+offset],packages[toGo, 2+offset]);
-        newNode$path = append(expanded$path, list(x = expanded$x, y = expanded$y+1));
+        newNode$path[[1]] = list(x = expanded$x, y = expanded$y+1);
         # We add the new node to the frontier, sorted with respect to the total cost of the path
         frontier = appendSorted(newNode,frontier);
       }
@@ -98,7 +99,7 @@ carmove = function (roads, car, packages)
         newNode$y = expanded$y-1;
         newNode$cost = expanded$cost + roads$vroads[expanded$x,expanded$y-1]; 
         newNode$heur = manhattanDist(expanded$x,expanded$y-1, packages[toGo, 1+offset],packages[toGo, 2+offset]);
-        newNode$path = append(expanded$path, list(x = expanded$x, y = expanded$y-1));   
+        newNode$path[[1]] = list(x = expanded$x, y = expanded$y-1);   
         # We add the new node to the frontier, sorted with respect to the total cost of the path
         frontier = appendSorted(newNode,frontier);
       }
@@ -114,16 +115,16 @@ carmove = function (roads, car, packages)
   if(length(expanded[[1]]) == 0){
     nextMove = 5;
   }
-  else if (expanded$path$x > car$x)
+  else if (expanded$path[[1]]$x > car$x)
   {
     nextMove = 6;
   }
-  else if(expanded$path$x < car$x)
+  else if(expanded$path[[1]]$x < car$x)
   {
     nextMove = 4;
   }
   
-  else if(expanded$path$y < car$y)
+  else if(expanded$path[[1]]$y < car$y)
   {
     nextMove = 2;
   }
