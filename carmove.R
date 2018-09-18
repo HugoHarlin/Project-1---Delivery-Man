@@ -7,10 +7,26 @@ carmove = function (roads, car, packages)
   toGo = 0;
   offset = 0;
   
+  if (length(car$mem) == 0){
+    car$mem = list(1,2,3,4,5)
+  }
+  
+  if (packages[car$mem[[1]],5] == 2){
+    car$mem = car$mem[-1];
+  }
+  
   if (car$load == 0) {
-    packagesleft = which(packages[, 5] == 0)
-    distance = abs(packages[,1] - car$x) + abs(packages[,2] - car$y)
-    toGo = packagesleft[which.min(distance[packagesleft])]
+    toGo = car$mem[[1]];
+  }
+  else {
+    toGo = car$load;
+    offset = 2;
+  }
+  
+  #if (car$load == 0) {
+    #packagesleft = which(packages[, 5] == 0)
+    #distance = abs(packages[,1] - car$x) + abs(packages[,2] - car$y)
+    #toGo = packagesleft[which.min(distance[packagesleft])]
     
     # We use A* to determine which package is the closest!
     #length = length(packagesleft[,1]);
@@ -19,11 +35,11 @@ carmove = function (roads, car, packages)
     #for (i in 1:length) {
     #}
     
-  }
-  else {
-    toGo = car$load
-    offset = 2
-  }
+  #}
+  #else {
+   # toGo = car$load
+    #offset = 2
+  #}
   
  expanded = aStar(packages, toGo, offset,car,roads);
  
@@ -50,6 +66,5 @@ carmove = function (roads, car, packages)
   }
   
   car$nextMove = nextMove;
-  car$mem = list()
   return(car)
 }
